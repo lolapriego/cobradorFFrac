@@ -1,19 +1,38 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <title>Sign in &middot; Twitter Bootstrap</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
-    <meta name="author" content="">
+<html>
+<head>
+  <meta charset="utf-8">
 
-    <!-- Le styles -->
-    <link href="../assets/css/bootstrap.css" rel="stylesheet">
+ <link rel="stylesheet" type="text/css" href="css/bootstrap.css" media="screen">
+ <link rel="stylesheet" type="text/css" href="css/bootstrap-responsive.css" media="screen">
+      <script src="http://code.jquery.com/jquery-latest.js" type="text/javascript"></script>
+
+  <script type="text/javascript">
+
+ function save(){
+
+          if(localStorage.debt_history){
+            var jsonDebt = localStorage.debt_history;
+            jsonDebt.push({contact: $("#contact").value, quantity: $("#quantity").value, concept: $("#concept").value});
+
+            localStorage.debt_history = JSON.stringify(jsonDebt);
+          }
+
+          else{
+            var jsonDebt = [];
+            jsonDebt.push({"contact": $("#contact").value, quantity: $("#quantity").value, concept: $("#concept").value});
+
+            localStorage.debt_history = JSON.stringify(jsonDebt);
+          }
+        }
+
+      </script>
+
+ <!-- Le styles -->
     <style type="text/css">
       body {
-        padding-top: 40px;
+        padding-top: 20px;
         padding-bottom: 40px;
-        background-color: #f5f5f5;
       }
 
       /* Custom container */
@@ -25,10 +44,32 @@
         margin: 30px 0;
       }
 
+      /* Main marketing message and sign up button */
+      .jumbotron {
+        margin: 60px 0;
+        text-align: center;
+      }
+      .jumbotron h1 {
+        font-size: 72px;
+        line-height: 1;
+      }
+      .jumbotron .btn {
+        font-size: 21px;
+        padding: 14px 24px;
+      }
+
+      /* Supporting marketing content */
+      .marketing {
+        margin: 60px 0;
+      }
+      .marketing p + h4 {
+        margin-top: 28px;
+      }
+
       .form-signin {
         max-width: 300px;
         padding: 19px 29px 29px;
-        margin: 0 auto 20px;
+        margin: 0 auto;
         background-color: #fff;
         border: 1px solid #e5e5e5;
         -webkit-border-radius: 5px;
@@ -49,65 +90,42 @@
         margin-bottom: 15px;
         padding: 7px 9px;
       }
-
     </style>
-    <link href="../assets/css/bootstrap-responsive.css" rel="stylesheet">
 
-    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
-    <!--[if lt IE 9]>
-      <script src="../assets/js/html5shiv.js"></script>
-    <![endif]-->
-
-    <!-- Fav and touch icons -->
-    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../assets/ico/apple-touch-icon-144-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../assets/ico/apple-touch-icon-114-precomposed.png">
-      <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../assets/ico/apple-touch-icon-72-precomposed.png">
-                    <link rel="apple-touch-icon-precomposed" href="../assets/ico/apple-touch-icon-57-precomposed.png">
-                                   <link rel="shortcut icon" href="../assets/ico/favicon.png">
   </head>
 
   <body>
+
     <div class="container-narrow">
 
-    <div class="masthead">
+      <div class="masthead">
         <ul class="nav nav-pills pull-right">
-          <li class="active"><a href="#">Home</a></li>
+          <li><a href="#">Home</a></li>
           <li><a href="#">About</a></li>
           <li><a href="#">Ayuda</a></li>
         </ul>
         <h3 class="muted">Cobrador del Frac</h3>
       </div>
-    </div>
+
+      <hr>
+
+
+
     <div class="container">
-
+      <div class="span4">
       <form class="form-signin">
-        <h2 class="form-signin-heading">Please sign in</h2>
-        <input type="text" class="input-block-level" placeholder="Email address">
-        <input type="password" class="input-block-level" placeholder="Password">
-        <label class="checkbox">
-          <input type="checkbox" value="remember-me"> Remember me
-        </label>
-        <button class="btn btn-large btn-primary" type="submit">Sign in</button>
-      </form>
+        <h2 class="form-signin-heading">Crea un nuevo moroso</h2>
+        <input id="contact" type="text" id="contact" class="input-block-level" placeholder="Empresa">
+        <input id="quantity" type="text" id="quantity" class="input-block-level" placeholder="Cantidad adeudada">
+        <input id="concept" type="text"  id="concept" class="input-block-level" placeholder="Concepto">
 
+
+        <button class="btn btn-large btn-primary" onclick="save()" id="saveButton" type="submit">Guardar</button>
+      </form>
+    </div>
     </div> <!-- /container -->
 
-    <!-- Le javascript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="../assets/js/jquery.js"></script>
-    <script src="../assets/js/bootstrap-transition.js"></script>
-    <script src="../assets/js/bootstrap-alert.js"></script>
-    <script src="../assets/js/bootstrap-modal.js"></script>
-    <script src="../assets/js/bootstrap-dropdown.js"></script>
-    <script src="../assets/js/bootstrap-scrollspy.js"></script>
-    <script src="../assets/js/bootstrap-tab.js"></script>
-    <script src="../assets/js/bootstrap-tooltip.js"></script>
-    <script src="../assets/js/bootstrap-popover.js"></script>
-    <script src="../assets/js/bootstrap-button.js"></script>
-    <script src="../assets/js/bootstrap-collapse.js"></script>
-    <script src="../assets/js/bootstrap-carousel.js"></script>
-    <script src="../assets/js/bootstrap-typeahead.js"></script>
 
   </body>
+
 </html>
